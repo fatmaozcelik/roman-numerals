@@ -63,9 +63,9 @@ yum update -y
 yum install python3-pip -y
 pip3 install Flask
 cd /home/ec2-user
-wget -P templates https://raw.githubusercontent.com/guile-clarusway/roman/refs/heads/main/templates/index.html
-wget -P templates https://raw.githubusercontent.com/guile-clarusway/roman/refs/heads/main/templates/result.html
-wget https://raw.githubusercontent.com/guile-clarusway/roman/refs/heads/main/app.py 
+wget -P templates https://raw.githubusercontent.com/fatmaozcelik/roman/refs/heads/main/templates/index.html
+wget -P templates https://raw.githubusercontent.com/fatmaozcelik/roman/refs/heads/main/templates/result.html
+wget https://raw.githubusercontent.com/fatmaozcelik/roman/refs/heads/main/app.py 
 python3 app.py
 ```
 - As for the student who use his/her own local terminal, they need to show the absulete path of userdata.sh file
@@ -76,8 +76,8 @@ python3 app.py
 aws ec2 run-instances \
     --image-id resolve:ssm:/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64 \
     --count 1 \
-    --instance-type t2.micro \
-    --key-name guile \
+    --instance-type t3.micro \
+    --key-name fatma \
     --security-groups roman_numerals_sec_grp \
     --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=roman_numbers}]'\
     --user-data file://user-data.sh
@@ -108,5 +108,5 @@ aws ec2 delete-security-group --group-name roman_numerals_sec_grp
 AWS CloudFormation CLI Command:
 
 ```bash
-aws cloudformation create-stack --stack-name guile --template-body file://roman-numerals-template.yaml --parameters ParameterKey=KeyPairParameter,ParameterValue=guile
+aws cloudformation create-stack --stack-name fatma --template-body file://roman-numerals-template.yaml --parameters ParameterKey=KeyPairParameter,ParameterValue=fatma
 ```
