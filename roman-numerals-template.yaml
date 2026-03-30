@@ -12,7 +12,7 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       ImageId: resolve:ssm:/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64
-      InstanceType: t2.micro
+      InstanceType: t3.micro
       KeyName: !Ref KeyPairParameter
       SecurityGroups: 
         - !Ref mySG
@@ -25,9 +25,9 @@ Resources:
         yum install python3-pip -y
         pip3 install Flask
         cd /home/ec2-user
-        wget -P templates https://raw.githubusercontent.com/guile-clarusway/roman-numerals/refs/heads/main/templates/index.html
-        wget -P templates https://raw.githubusercontent.com/guile-clarusway/roman-numerals/refs/heads/main/templates/result.html
-        wget https://raw.githubusercontent.com/guile-clarusway/roman-numerals/refs/heads/main/app.py
+        wget -P templates https://raw.githubusercontent.com/fatmaozcelik/roman-numerals/refs/heads/main/templates/index.html
+        wget -P templates https://raw.githubusercontent.com/fatmaozcelik/roman-numerals/refs/heads/main/templates/result.html
+        wget https://raw.githubusercontent.com/fatmaozcelik/roman-numerals/refs/heads/main/app.py
         python3 app.py
 
   mySG:
